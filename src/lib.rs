@@ -10,7 +10,7 @@ use diesel::mysql::MysqlConnection;
 use dotenv::dotenv;
 use std::env;
 
-use self::models::{Post, NewPost};
+use self::models::post::{Post, NewPost};
 
 pub fn establish_connection() -> MysqlConnection {
     dotenv().ok();
