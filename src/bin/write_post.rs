@@ -5,7 +5,7 @@ use diesel_demo::*;
 use std::io::{stdin, Read};
 
 fn main() {
-    let connection = establish_connection();
+    let connection = db::establish_connection();
 
     let mut title = String::new();
     let mut body = String::new();

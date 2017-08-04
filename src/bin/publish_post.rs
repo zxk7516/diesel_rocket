@@ -11,7 +11,7 @@ fn main() {
 
     let id = args().nth(1).expect("publish_post requires a post id")
         .parse::<i32>().expect("Invalid ID");
-    let connection = establish_connection();
+    let connection = db::establish_connection();
 
     let post: Post = posts.find(id)
         .first(&connection)

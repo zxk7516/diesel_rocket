@@ -6,17 +6,17 @@ extern crate rocket;
 extern crate dotenv;
 
 use std::env;
-//use botcket::db;
 use dotenv::dotenv;
-use botcket::routes::*;
+use diesel_demo::*;
 
 fn main() {
     let _ = dotenv();
     let database_url = env::var("DATABASE_URL").expect("env var DATABASE_URL needed");
 
+    let db_conn = db::establish_connection();
+
     rocket::ignite()
         .mount("/", routes![index])
-        .mount("/", routes![create_connector, index_connectors, show_connector, delete_connector])
-        .manage(db::init_pool(&database_url))
-        .launch()
+        .manage(db_conn)
+        .launch();
 }

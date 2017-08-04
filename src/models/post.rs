@@ -1,6 +1,6 @@
 use schema::posts;
 
-#[derive(Queryable)]
+#[derive(Queryable,Serialize)]
 pub struct Post {
     pub id: i32,
     pub title: String,
@@ -8,7 +8,7 @@ pub struct Post {
     pub published: bool,
 }
 
-#[derive(Insertable)]
+#[derive(Insertable,Deserialize,FromForm)]
 #[table_name="posts"]
 pub struct NewPost<'a> {
     pub title: &'a str,

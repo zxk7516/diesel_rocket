@@ -8,7 +8,7 @@ use diesel::prelude::*;
 fn main() {
     use self::schema::posts::dsl::*;
 
-    let connection = establish_connection();
+    let connection = db::establish_connection();
     let results = posts.filter(published.eq(true))
         .limit(5)
         .load::<Post>(&connection)

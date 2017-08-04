@@ -1,6 +1,6 @@
 mod posts;
 
-pub use self::connector::*;
+pub use self::posts::*;
 
 #[get("/")]
 pub fn index() -> &'static str {

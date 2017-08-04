@@ -1,30 +1,26 @@
+#![feature(plugin, custom_derive, custom_attribute)]
+#![plugin(rocket_codegen)]
+extern crate rocket;
+extern crate rocket_contrib;
+
 #[macro_use] extern crate diesel;
 #[macro_use] extern crate diesel_codegen;
 extern crate dotenv;
+extern crate serde;
+extern crate serde_json;
 
 pub mod schema;
 pub mod models;
+pub mod controller;
+pub mod response;
+pub mod db;
 
-use diesel::prelude::*;
-use diesel::mysql::MysqlConnection;
-use dotenv::dotenv;
-use std::env;
 
-use self::models::post::{Post, NewPost};
-
-pub fn establish_connection() -> MysqlConnection {
-    dotenv().ok();
-
-    let database_url = env::var("DATABASE_URL")
-        .expect("DATABASE_URL must be set");
-    MysqlConnection::establish(&database_url)
-        .expect(&format!("Error connecting to {}", database_url))
-}
 
 pub fn create_post(conn: &MysqlConnection, title: &str, body: &str) -> Post {
     use schema::posts::dsl::{posts, id};
 
-    let new_post = NewPost {
+    let new_post = models::post::NewPost {
         title: title,
         body: body,
     };
