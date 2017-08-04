@@ -6,6 +6,7 @@ use serde::Serialize;
 use diesel::result::{Error as DieselError, DatabaseErrorKind as DBError};
 use rocket::http::{ContentType, Status};
 use rocket::response::{Responder, Response};
+use rocket::request::Request;
 
 #[derive(Serialize)]
 pub struct APIResponse<T: Serialize> {
@@ -25,8 +26,10 @@ pub struct APIResult<T: Serialize> {
     api_result: APIResponse<T>,
 }
 
-impl<'r, T: Serialize> Responder<'r> for APIResult<T> {
-    fn respond(self) -> Result<Response<'r>, Status> {
+
+impl<'r, T: Serialize> Responder<'r> for APIResult<T>{
+
+    fn respond_to(self,req: &Request) -> Result<Response<'r>, Status> {
         let mut response = Response::build();
 
         serde_json::to_string(&self.api_result)

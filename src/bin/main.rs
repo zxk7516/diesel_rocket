@@ -13,7 +13,7 @@ fn main() {
     let _ = dotenv();
     let database_url = env::var("DATABASE_URL").expect("env var DATABASE_URL needed");
 
-    let db_conn = db::establish_connection();
+    let db_conn = db::init_pool(&database_url);
 
     rocket::ignite()
         .mount("/", routes![index])
