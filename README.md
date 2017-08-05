@@ -1,7 +1,7 @@
 # diesel_demo
 diesel+rocket web rest api 
 
-This is a REST API project template that uses [Rocket](https://github.com/SergioBenitez/Rocket) framework with [Diesel](https://github.com/diesel-rs/diesel) ORM backed up with Postgresql database.
+This is a REST API project template that uses [Rocket](https://github.com/SergioBenitez/Rocket) framework with [Diesel](https://github.com/diesel-rs/diesel) ORM backed up with mysql database.
 
 - You need nightly version of Rust for [Rocket](https://github.com/SergioBenitez/Rocket).
  ```rustup default nightly```
