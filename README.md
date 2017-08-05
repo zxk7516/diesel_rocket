@@ -15,6 +15,6 @@ This is a REST API project template that uses [Rocket](https://github.com/Sergio
 - Run database migration from your project directory. First make sure you have a working database url in your .env file.
     ```disel migration run```
 - Ignite your diesel powered rocket api 
-    ```cargo run```
+    ```cargo run --bin main```
 - Skeleton code is taken from [mgattozi](https://github.com/mgattozzi/mgattozzi)
 
