@@ -16,5 +16,5 @@ This is a REST API project template that uses [Rocket](https://github.com/Sergio
     ```disel migration run```
 - Ignite your diesel powered rocket api 
     ```cargo run --bin main```
-- Skeleton code is taken from [mgattozi](https://github.com/mgattozzi/mgattozzi)
 
+some code from [mgattozzi](https://github.com/mgattozzi/mgattozzi/)
